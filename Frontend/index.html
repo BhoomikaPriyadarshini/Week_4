@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="top-bar">
+            <div>
+                <h1>Task Manager</h1>
+                <p id="welcomeText">Add, view and delete your tasks</p>
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+
+        <form id="taskForm">
+            <label>Task Name</label>
+            <input type="text" id="taskName" placeholder="Enter task name" required>
+
+            <div id="suggestionBox" class="suggestion-box"></div>
+
+            <label>Status</label>
+            <select id="status" required>
+                <option value="">Select status</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+
+            <label>Date</label>
+            <input type="date" id="date" required>
+
+            <button type="submit">Add Task</button>
+        </form>
+
+        <h2>Task List</h2>
+        <div id="taskList"></div>
+    </div>
+    <div id="editModal" class="modal">
+    <div class="modal-content">
+        <h2>Edit Task</h2>
+
+        <label>Task Name</label>
+        <input type="text" id="editTaskName">
+
+        <label>Status</label>
+        <select id="editStatus">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+
+        <label>Date</label>
+        <input type="date" id="editDate">
+
+        <div class="modal-actions">
+            <button type="button" class="edit-btn" id="saveEditBtn">Save Changes</button>
+            <button type="button" class="delete-btn" id="cancelEditBtn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
