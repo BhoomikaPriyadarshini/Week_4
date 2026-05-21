@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const dns = require("dns");
+const path = require("path");
 
 const taskRoutes = require("./routes/tskroutes");
 const authRoutes = require("./routes/authroutes");
@@ -19,16 +20,18 @@ app.use(express.json());
 app.use("/api/tasks", taskRoutes);
 app.use("/api/auth", authRoutes);
 
+app.use(express.static(path.join(__dirname, "Frontend")));
+
 app.get("/", function(req, res) {
-    res.send("Task Manager Backend is Running");
+    res.sendFile(path.join(__dirname, "Frontend", "index.html"));
 });
 
 mongoose.connect(process.env.MONGO_URI)
     .then(function() {
         console.log("MongoDB Connected");
 
-        app.listen(process.env.PORT, function() {
-            console.log("Server is running on port " + process.env.PORT);
+        app.listen(process.env.PORT || 5000, function() {
+            console.log("Server is running on port " + (process.env.PORT || 5000));
         });
     })
     .catch(function(error) {
